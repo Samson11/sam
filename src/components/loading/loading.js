@@ -1,8 +1,10 @@
 import React from 'react';
-import './loading.css'
+import './loading.scss';
 
-const loading = () => {
-  
-};
+const Loading = () => {
+  return (
+    <div>Loading</div>
+  )
+}
 
-export loading;
+export default Loading;

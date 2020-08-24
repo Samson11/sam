@@ -1,0 +1,56 @@
+/**
+** Linear Loading for Samson...
+**/
+.text-center {
+  text-align: center;
+}
+
+.progress {
+  background-color: #e5e9eb;
+  height: 0.25em;
+  position: relative;
+  width: 24em;
+}
+
+.progress-bar {
+  animation-duration: 4s;
+  animation-name: width;
+  background-image: linear-gradient(to right, $primary-color, $primary-color, $primary-color, $primary-color, $primary-color,$primary-color);
+  background-size: 24em 0.25em;
+  height: 100%;
+  position: relative;
+}
+
+.progress-shadow {
+  background-image: linear-gradient(to bottom, #eaecee, transparent);
+  height: 4em;
+  position: absolute;
+  top: 100%;
+  transform: skew(45deg);
+  transform-origin: 0 0;
+  width: 100%;
+}
+
+.sam-progress {
+    background-color: #e5e9eb;
+    height: 0.25em;
+    position: relative;
+    width: 24em;
+  }
+.sam-progress-bar {
+    animation-duration: 4s;
+    animation-name: width;
+    background-image: linear-gradient(to right, #4cd964, #5ac8fa, #007aff, #34aadc, #5856d6, #ff2d55);
+    background-size: 24em 0.25em;
+    height: 100%;
+    position: relative;
+  }
+.sam-progress-shadow {
+    background-image: linear-gradient(to bottom, #eaecee, transparent);
+    height: 4em;
+    position: absolute;
+    top: 100%;
+    transform: skew(45deg);
+    transform-origin: 0 0;
+    width: 100%;
+ }
