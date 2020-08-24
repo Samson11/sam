@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import Loading from './Components/loading/loading'
-import './App.css';
+import Loading from './components/loading/loading';
+import './App.scss';
 
 function App() {
   return (

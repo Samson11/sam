@@ -1,0 +1,299 @@
+// Animations
+@-webkit-keyframes rotate-left {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+    50% {
+        -webkit-transform: rotate(180deg);
+    }
+    100% {
+        -webkit-transform: rotate(180deg);
+    }
+}
+
+@-moz-keyframes rotate-left {
+    0% {
+        -moz-transform: rotate(0deg);
+    }
+    50% {
+        -moz-transform: rotate(180deg);
+    }
+    100% {
+        -moz-transform: rotate(180deg);
+    }
+}
+
+@-ms-keyframes rotate-left {
+    0% {
+        -ms-transform: rotate(0deg);
+    }
+    50% {
+        -ms-transform: rotate(180deg);
+    }
+    100% {
+        -ms-transform: rotate(180deg);
+    }
+}
+
+@-o-keyframes rotate-left {
+    0% {
+        -o-transform: rotate(0deg);
+    }
+    50% {
+        -o-transform: rotate(180deg);
+    }
+    100% {
+        -o-transform: rotate(180deg);
+    }
+}
+
+@keyframes rotate-left {
+    0% {
+        transform: rotate(0deg);
+    }
+    50% {
+        transform: rotate(180deg);
+    }
+    100% {
+        transform: rotate(180deg);
+    }
+}
+
+@-webkit-keyframes rotate-right {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+    50% {
+        -webkit-transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(180deg);
+    }
+}
+
+@-moz-keyframes rotate-right {
+    0% {
+        -moz-transform: rotate(0deg);
+    }
+    50% {
+        -moz-transform: rotate(0deg);
+    }
+    100% {
+        -moz-transform: rotate(180deg);
+    }
+}
+
+@-ms-keyframes rotate-right {
+    0% {
+        -ms-transform: rotate(0deg);
+    }
+    50% {
+        -ms-transform: rotate(0deg);
+    }
+    100% {
+        -ms-transform: rotate(180deg);
+    }
+}
+
+@-o-keyframes rotate-right {
+    0% {
+        -o-transform: rotate(0deg);
+    }
+    50% {
+        -o-transform: rotate(0deg);
+    }
+    100% {
+        -o-transform: rotate(180deg);
+    }
+}
+
+@keyframes rotate-right {
+    0% {
+        transform: rotate(0deg);
+    }
+    50% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(180deg);
+    }
+}
+
+@keyframes rotate {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  @for $i from 0 through 5 {
+    $start: $i * 20;
+    $delay: 900 - ($i * 125);
+    $mid: 180 + $start;
+    $finish: 360 + $start;
+    
+    .pip-#{$i} {
+      &::after {
+        transform: rotate(#{$start}deg);
+        animation-name: rotate-#{$i};
+        animation-delay: #{$delay}ms;
+      }
+    }  
+    
+    @keyframes rotate-#{$i} {
+      0%, 20% {
+        transform: rotate(#{$start}deg);
+      }
+      40%, 60% {
+        transform: rotate(#{$mid}deg);
+      }
+      80%, 100% {
+        transform: rotate(#{$finish}deg);
+      }
+    }
+  }
+  
+  @keyframes opacity {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+
+@keyframes fade{
+    from { opacity: 1; }
+    to { opacity:  0.25; }
+}
+
+@-webkit-keyframes fade {
+    from { opacity: 1; }
+    to { opacity:  0.25; }
+}
+
+
+@keyframes width {
+    0%, 100% {
+      transition-timing-function: cubic-bezier(1, 0, 0.65, 0.85);
+    }
+    0% {
+      width: 0;
+    }
+    100% {
+      width: 100%;
+    }
+}
+
+.sam-container {
+    width: 100%;
+    height: 220px;
+  }
+  
+.sam-container>div {
+    font-size: 75px;
+    text-transform: uppercase;
+    color: $primary-color;
+    opacity: 0;
+    height:0px;
+}
+  
+.sam-container>div:nth-child(1) {
+    animation: animation 12s infinite;
+}
+  
+.sam-container>div:nth-child(2) {
+    animation: animation 12s infinite;
+    animation-delay: 4s;
+}
+  
+.sam-container>div:nth-child(3) {
+    animation: animation 12s infinite;
+    animation-delay: 8s;
+}
+
+@keyframes animation {
+    0%{
+        opacity: 0;
+        height: auto;
+    }
+    16% {
+        opacity: 1;
+    }
+    33% {
+        opacity: 0;
+        height: 0px;
+    }
+    100%{
+        opacity: 0;
+        height: 0px;
+    }
+}
+  
+  .output {
+    text-align:center;
+    color: $primary-color;
+    font-family: 'Segoe UI';
+    h1 {
+      font-size:30px;
+    }
+  }
+  
+  /* Cursor Styling */
+  
+  .cursor::after {
+    content:'';
+    display:inline-block;
+    margin-left:3px;
+    background-color:$primary-color;
+    animation-name:blink;
+    animation-duration:0.5s;
+    animation-iteration-count: infinite;
+  }
+  h1.cursor::after {
+    height:24px;
+    width:13px;
+  }
+  p.cursor::after {
+    height:13px;
+    width:6px;
+  }
+  
+  @keyframes blink {
+    0% {
+      opacity:1;
+    }
+    49% {
+      opacity:1;
+    }
+    50% {
+      opacity:0;
+    }
+    100% {
+      opacity:0;
+    }
+  }
+
+  p {  
+    border-right: solid 5px rgba(255,255,255,.75);  
+    white-space: nowrap;  overflow: hidden;      
+    font-family: 'Source Code Pro', monospace;    
+    font-size: 28px;  
+    color: $primary-color;
+  }
+    
+    /* Animation */
+  p {  
+    animation: animated-text 4s linear 1s 1 normal both,   animated-cursor 600ms linear infinite;}
+    /* text animation */
+
+  @keyframes animated-text{  
+    from{width: 0;}  to{width: 456px;}}
+  /* cursor animations */
+  
+  @keyframes animated-cursor{  
+    from{border-right-color: rgba(255,255,255,.75);}  
+    to{border-right-color: transparent;}
+}

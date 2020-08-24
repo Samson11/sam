@@ -1,0 +1,407 @@
+// Material Text Field
+
+.material-text-field {
+    position: relative;
+    display: inline-block;
+    font-size: 16px;
+    line-height: 1.5;
+    overflow: hidden;
+}
+
+/* Input, Textarea */
+.material-text-field > input,
+.material-text-field > textarea {
+    display: block;
+    box-sizing: border-box;
+    margin: 0;
+    border: none;
+    border-top: solid 27px transparent;
+    border-bottom: solid 1px $primary-color;
+    padding: 0 0 4px;
+    width: 100%;
+    height: inherit;
+    color: $primary-color;
+    background-color: transparent;
+    box-shadow: none; /* Firefox */
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    caret-color: $primary-color;
+    transition: border-bottom 0.2s, background-color 0.2s;
+}
+
+/* Span */
+.material-text-field > input + span,
+.material-text-field > textarea + span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: block;
+    box-sizing: border-box;
+    padding: 7px 0 0;
+    color: $primary-color;
+    font-size: 75%;
+    line-height: 18px;
+    pointer-events: none;
+    transition: color 0.2s, font-size 0.2s, line-height 0.2s;
+}
+
+/* Underline */
+.material-text-field > input + span::after,
+.material-text-field > textarea + span::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: $primary-color;
+    transform-origin: bottom center;
+    transform: scaleX(0);
+    transition: transform 0.2s;
+}
+
+/* Hover */
+.material-text-field > input:hover,
+.material-text-field > textarea:hover {
+    border-bottom-color: rgba(var(--pure-material-onsurface-rgb, 0, 0, 0), 0.87);
+}
+
+/* Placeholder-shown */
+.material-text-field > input:not(:focus):placeholder-shown + span,
+.material-text-field > textarea:not(:focus):placeholder-shown + span {
+    font-size: inherit;
+    line-height: 56px;
+}
+
+/* Focus */
+.material-text-field > input:focus,
+.material-text-field > textarea:focus {
+    outline: none;
+}
+
+.material-text-field > input:focus + span,
+.material-text-field > textarea:focus + span {
+    color: $primary-color;
+}
+
+.material-text-field > input:focus + span::before,
+.material-text-field > textarea:focus + span::before {
+    opacity: 0.12;
+}
+
+.material-text-field > input:focus + span::after,
+.material-text-field > textarea:focus + span::after {
+    transform: scale(1);
+}
+
+/* Disabled */
+.material-text-field > input:disabled,
+.material-text-field > textarea:disabled {
+    border-bottom-color: $primary-color;
+    color: $primary-color;
+}
+
+.material-text-field > input:disabled + span,
+.material-text-field > textarea:disabled + span {
+    color: $primary-color;
+}
+
+/* Faster transition in Safari for less noticable fractional font-size issue */
+@media not all and (min-resolution:.001dpcm) {
+    @supports (-webkit-appearance:none) {
+        .material-text-field > input,
+        .material-text-field > input + span,
+        .material-text-field > input + span::after,
+        .material-text-field > textarea,
+        .material-text-field > textarea + span,
+        .material-text-field > textarea + span::after {
+            transition-duration: 0.1s;
+        }
+    }
+}
+
+//Windows Text Field
+.windows-text-field {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    position: relative;
+    border: 1px $primary-color solid;
+    color: #1d1d1d;
+    width: 100%;
+    display: block;
+    padding: 0 0.75rem;
+    font-size: 1rem;
+    height: 36px;
+    line-height: 36px;
+    background: #ffffff none;
+    background-clip: padding-box;
+    min-width: 0;
+}
+
+// Material Search Field
+
+body {
+  color: #2d2d2d;
+  letter-spacing: 0.2px;
+  /* Search Active */
+  &.search-active {
+    overflow: hidden;
+    .search-input {
+      opacity: 1;
+      transform: none;
+      pointer-events: all;
+    }
+    .icon-close {
+      opacity: 1;
+      transform: rotate(-90deg);
+    }
+    .control {
+      cursor: default;
+      .btn-material {
+        transform: scale(70);
+      }
+      .icon-material-search {
+        opacity: 0;
+      }
+    }
+  }
+}
+
+
+/* Close Icon */
+
+.icon-close {
+  position: fixed;
+  top: 30px;
+  right: 30px;
+  color: #FFF;
+  cursor: pointer;
+  font-size: 70px;
+  opacity: 0;
+  transition: all 0.3s ease-in-out;
+  &:hover {
+    transform: rotate(0);
+  }
+}
+
+
+/* Search Input */
+
+.search-input {
+  height: 80px;
+  position: absolute;
+  top: 50%;
+  left: 50px;
+  margin-top: 40px;
+  pointer-events: none;
+  opacity: 0;
+  transform: translate( 40px, 0);
+  transition: all 0.3s ease-in-out;
+  input {
+    color: #fff;
+    font-size: 54px;
+    border: 0;
+    background: transparent;
+    -webkit-appearance: none;
+    box-sizing: border-box;
+    outline: 0;
+    font-weight: 200;
+  }
+  ::-webkit-input-placeholder {
+    color: $color-placeholder;
+  }
+  :-moz-placeholder {
+    color: $color-placeholder;
+    opacity: 1;
+  }
+  ::-moz-placeholder {
+    color: $color-placeholder;
+    opacity: 1;
+  }
+  :-ms-input-placeholder {
+    color: $color-placeholder;
+  }
+}
+
+/* Control btn */
+
+.control {
+  cursor: pointer;
+  .btn-material {
+    position: absolute;
+    top: $btn-material-size/2;
+    width: $btn-material-size;
+    height: $btn-material-size;
+    right: $btn-material-size;
+    border-radius: 100%;
+    box-sizing: border-box;
+    background: $primary-color;
+    outline: 0;
+    transform-origin: 50%;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+    &:hover {
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+    }
+  }
+  .icon-material-search {
+    color: #FFF;
+    position: absolute;
+    top: 49px;
+    right: 48px + $btn-material-size/2;
+    transition: opacity 0.3s ease-in-out;
+  }
+}
+
+//Plain Search Field
+
+.search-form {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  width: 350px;
+  height: 40px;
+  border-radius: 40px;
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+  transform: translate(-50%, -50%);
+  background: #fff;
+  transition: all 0.3s ease;
+
+  &.focus {
+    box-shadow: 0 3px 4px rgba(0, 0, 0, 0.15);
+  }
+}
+
+.search-input {
+  position: absolute;
+  top: -50px;
+  left: 38px;
+  font-size: 14px;
+  background: none;
+  color: #5a6674;
+  width: 195px;
+  height: 20px;
+  border: none;
+  appearance: none;
+  outline: none;
+
+  &::-webkit-search-cancel-button {
+    appearance: none;
+  }
+}
+
+.search-button {
+  position: absolute;
+  top: 10px;
+  left: 15px;
+  height: 20px;
+  width: 20px;
+  padding: 0;
+  margin: 0;
+  border: none;
+  background: none;
+  outline: none!important;
+  cursor: pointer;
+  
+  & svg {
+    width: 20px;
+    height: 20px;
+    fill: #5a6674;
+  }
+}
+
+.search-option {
+  position: absolute;
+  text-align: right;
+  top: 10px;
+  right: 15px;
+
+  div {
+    position: relative;
+    display: inline-block;
+    margin: 0 1px;
+    cursor: pointer;
+    
+    input {
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0.01;
+      cursor: pointer;
+    }
+    
+    span {
+      position: absolute;
+      display: block;
+      text-align: center;
+      left: 50%;
+      transform: translateX(-50%);
+      opacity: 0;
+      background: #929AA3;
+      color: #fff;
+      font-size: 9px;
+      letter-spacing: 1px;
+      line-height: 1;
+      text-transform: uppercase;
+      padding: 4px 7px;
+      border-radius: 12px;
+      top: -18px;
+      transition: all .2s ease-in-out;
+      
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -3px;
+        left: 50%;
+        transform: translateX(-50%);
+        border-top: 4px solid #929AA3;
+        border-left: 4px solid transparent;
+        border-right: 4px solid transparent;
+        transition: all .2s ease-in-out;
+      }
+    }
+    
+    &:hover span {
+      opacity: 1;
+      top: -21px;
+    }
+    
+    label {
+      display: block;
+      cursor: pointer;
+    }
+    
+    svg {
+      height: 20px;
+      width: 20px;
+      fill: #5a6674;
+      opacity: 0.6;
+      transition: all .2s ease-in-out;
+      pointer-events: none;
+    }
+    
+    &:hover svg {
+      opacity: 1;
+    }
+    
+    input:checked + label svg {
+      fill: $primary-color;
+      opacity: .9;
+    }
+    
+    input:checked + label span {
+      background: $primary-color;
+      
+      &::after {
+        border-top-color: $primary-color;
+      }
+    }
+  }
+
+
+}

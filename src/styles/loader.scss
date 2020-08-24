@@ -1,0 +1,256 @@
+/** Circle Loading Default UI**/
+.loader {
+    display: inline-block;
+    position: relative;
+}
+
+.left,
+.right {
+    margin-top: auto;
+    margin-left: auto;
+    position: absolute;
+    clip: rect(0, 100px , 100px, 50px);
+    
+    span {
+       width: 80px;
+       height: 80px;
+       border-radius: 100%;
+       position: absolute;
+       opacity: 0.7;
+       border: 7px solid $primary-color; 
+    }
+}
+
+.right {
+    clip: rect(0px, 50px, 100px, 0px);
+}
+
+.left span {
+    clip: rect(0, 50px , 100px, 0px);
+    -webkit-animation: rotate-left 5s infinite linear;
+    -moz-animation: rotate-left 5s infinite linear;
+    -ms-animation: rotate-left 5s infinite linear;
+    -o-animation: rotate-left 5s infinite linear;
+    animation: rotate-left 5s infinite linear;
+}
+
+.right span {
+    clip: rect(0px, 100px, 100px, 50px);
+    -webkit-animation: rotate-right 5s infinite linear;
+    -moz-animation: rotate-right 5s infinite linear;
+    -ms-animation: rotate-right 5s infinite linear;
+    -o-animation: rotate-right 5s infinite linear;
+    animation: rotate-right 5s infinite linear;
+}
+
+/** Windows Circle Loading **/
+.body {
+    background-color: $background-color;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    color: $secondary-color;
+  }
+  
+  h1 {
+    font-weight: 300;
+    font-family: Open Sans, 'Segoe UI';
+  }
+  
+  .wrapper {
+    text-align: center;
+  }
+  
+  .windows-loader {
+    position: relative;
+    width: $loader-size;
+    height: $loader-size;
+    border-radius: 50%;
+    animation: $duration*1.5 linear 0s normal none infinite running;
+    animation-name: rotate;
+    left: $loader-size / 2;
+  }
+  .windows-loader span::after {
+    position: absolute;
+    width: $pip-size;
+    height: $pip-size;
+    border-radius: 50%;
+    background-color: #fff;
+    content: "";
+    display: block;
+    transform-origin: $loader-size/2 $loader-size/2;
+    animation-duration: $duration;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+}
+  
+/** IOS Spinner **/
+div.spinner {
+    position: relative;
+    width: $loader-size;
+    height: $loader-size;
+    display: inline-block;
+    margin-left: 50%;
+    margin-right: 50%;
+    background: $primary-color;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+div.spinner div {
+    width: 6%;
+    height: 16%;
+    background: #fff;
+    position: absolute;
+    left: 49%;
+    top: 43%;
+    opacity: 0;
+    border-radius: 50px;
+    box-shadow: 0 0 3px rgba(0,0,0,0.2);
+    animation: fade 1s linear infinite;
+    -webkit-border-radius: 50px;
+    -webkit-box-shadow: 0 0 3px rgba(0,0,0,0.2);
+    -webkit-animation: fade 1s linear infinite;
+}
+
+div.spinner div.bar1 {
+    -webkit-transform: rotate(0deg) translate(0, -130%);
+    -webkit-animation-delay: 0s;
+    transform: rotate(0deg) translate(0, -130%);
+    animation-delay: 0s;
+}
+
+div.spinner div.bar2 {
+    -webkit-transform: rotate(30deg) translate(0, -130%);
+    -webkit-animation-delay: -0.9167s;
+    transform: rotate(30deg) translate(0, -130%);
+    animation-delay: -0.9167s;
+}
+
+div.spinner div.bar3 {
+    -webkit-transform: rotate(60deg) translate(0, -130%);
+    -webkit-animation-delay: -0.833s;
+    transform: rotate(60deg) translate(0, -130%);
+    animation-delay: -0.833s;
+}
+
+div.spinner div.bar4 {
+    -webkit-transform: rotate(90deg) translate(0, -130%);
+    -webkit-animation-delay: -0.7497s;
+    transform: rotate(90deg) translate(0, -130%);
+    animation-delay: -0.7497s;
+}
+
+div.spinner div.bar5 {
+    -webkit-transform: rotate(120deg) translate(0, -130%);
+    -webkit-animation-delay: -0.667s;
+    transform: rotate(120deg) translate(0, -130%);
+    animation-delay: -0.667s;
+}
+
+div.spinner div.bar6 {
+    -webkit-transform: rotate(150deg) translate(0, -130%);
+    -webkit-animation-delay: -0.5837s;
+    transform: rotate(150deg) translate(0, -130%);
+    animation-delay: -0.5837s;
+}
+
+div.spinner div.bar7 {
+    -webkit-transform: rotate(180deg) translate(0, -130%);
+    -webkit-animation-delay: -0.5s;
+    transform: rotate(180deg) translate(0, -130%);
+    animation-delay: -0.5s;
+}
+
+div.spinner div.bar8 {
+    -webkit-transform: rotate(210deg) translate(0, -130%);
+    -webkit-animation-delay: -0.4167s;
+    transform: rotate(210deg) translate(0, -130%);
+    animation-delay: -0.4167s;
+}
+
+div.spinner div.bar9 {
+    -webkit-transform: rotate(240deg) translate(0, -130%);
+    -webkit-animation-delay: -0.333s;
+    transform: rotate(240deg) translate(0, -130%);
+    animation-delay: -0.333s;
+}
+
+div.spinner div.bar10 {
+    -webkit-transform: rotate(270deg) translate(0, -130%);
+    -webkit-animation-delay: -0.2497s;
+    transform: rotate(270deg) translate(0, -130%);
+    animation-delay: -0.2497s;
+}
+
+div.spinner div.bar11 {
+    -webkit-transform: rotate(300deg) translate(0, -130%);
+    -webkit-animation-delay: -0.167s;
+    transform: rotate(300deg) translate(0, -130%);
+    animation-delay: -0.167s;
+}
+
+div.spinner div.bar12 {
+    -webkit-transform: rotate(330deg) translate(0, -130%);
+    -webkit-animation-delay: -0.0833s;
+    transform: rotate(330deg) translate(0, -130%);
+    animation-delay: -0.0833s;
+}
+
+/**
+** Linear Loading
+**/
+.text-center {
+  text-align: center;
+}
+
+.progress {
+  background-color: #e5e9eb;
+  height: 0.25em;
+  position: relative;
+  width: 24em;
+}
+.progress-bar {
+  animation-duration: 4s;
+  animation-name: width;
+  background-image: linear-gradient(to right, $primary-color, $primary-color, $primary-color, $primary-color, $primary-color,$primary-color);
+  background-size: 24em 0.25em;
+  height: 100%;
+  position: relative;
+}
+.progress-shadow {
+  background-image: linear-gradient(to bottom, #eaecee, transparent);
+  height: 4em;
+  position: absolute;
+  top: 100%;
+  transform: skew(45deg);
+  transform-origin: 0 0;
+  width: 100%;
+}
+
+.sam-progress {
+    background-color: #e5e9eb;
+    height: 0.25em;
+    position: relative;
+    width: 24em;
+  }
+.sam-progress-bar {
+    animation-duration: 4s;
+    animation-name: width;
+    background-image: linear-gradient(to right, #4cd964, #5ac8fa, #007aff, #34aadc, #5856d6, #ff2d55);
+    background-size: 24em 0.25em;
+    height: 100%;
+    position: relative;
+  }
+.sam-progress-shadow {
+    background-image: linear-gradient(to bottom, #eaecee, transparent);
+    height: 4em;
+    position: absolute;
+    top: 100%;
+    transform: skew(45deg);
+    transform-origin: 0 0;
+    width: 100%;
+ }

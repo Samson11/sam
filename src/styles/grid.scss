@@ -1,0 +1,39 @@
+// Grid and Positions
+* {
+	outline:none;
+ -webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  min-height: 100vh;
+}
+
+body {
+ 	font-weight: 400;
+  margin: 0;
+  position: relative;
+  height: 100vh;
+  background: #ffffff;
+  font-size: 13px;
+  font-family: 'Roboto', sans-serif;
+  overflow: hidden;
+}
+
+h1 {
+  font-size: 2.25em;
+  font-weight: 100;
+  line-height: 1.2em;
+  margin: 0 0 1.5em;
+}
+.container {
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  margin-left: auto;
+  margin-right: auto;
+}
