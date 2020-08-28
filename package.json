@@ -17,30 +17,31 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3",
     "redux": "^4.0.5",
-    "redux-firestore": "^0.13.0"
+    "redux-firestore": "^0.13.0",
+    "redux-thunk": "^2.3.0"
   },
   "homepage": "./",
   "main": "src/start.js",
   "scripts": {
-      "start": "nf start -p 3000",
-      "build": "react-scripts build",
-      "test": "react-scripts test",
-      "eject": "react-scripts eject",
-      "electron": "electron .",
-      "electron-start": "node src/start-react",
-      "react-start": "react-scripts start",
-      "pack": "build --dir",
-      "dist": "npm run build && build",
-      "postinstall": "install-app-deps"
+    "start": "nf start -p 3000",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "electron": "electron .",
+    "electron-start": "node src/start-react",
+    "react-start": "react-scripts start",
+    "pack": "build --dir",
+    "dist": "npm run build && build",
+    "postinstall": "install-app-deps"
+  },
+  "build": {
+    "appId": "com.samson",
+    "win": {
+      "iconUrl": "https://cdn2.iconfinder.com/data/icons/designer-skills/128/react-256.png"
     },
-    "build": {
-      "appId": "com.electron.electron-with-create-react-app",
-      "win": {
-        "iconUrl": "https://cdn2.iconfinder.com/data/icons/designer-skills/128/react-256.png"
-      },
-      "directories": {
-        "buildResources": "public"
-      }
+    "directories": {
+      "buildResources": "public"
+    }
   },
   "eslintConfig": {
     "extends": "react-app"

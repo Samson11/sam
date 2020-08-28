@@ -127,21 +127,21 @@
       transform: rotate(360deg);
     }
   }
-  
+
   @for $i from 0 through 5 {
     $start: $i * 20;
     $delay: 900 - ($i * 125);
     $mid: 180 + $start;
     $finish: 360 + $start;
-    
+
     .pip-#{$i} {
       &::after {
         transform: rotate(#{$start}deg);
         animation-name: rotate-#{$i};
         animation-delay: #{$delay}ms;
       }
-    }  
-    
+    }
+
     @keyframes rotate-#{$i} {
       0%, 20% {
         transform: rotate(#{$start}deg);
@@ -154,7 +154,7 @@
       }
     }
   }
-  
+
   @keyframes opacity {
     from {
       opacity: 1;
@@ -191,7 +191,7 @@
     width: 100%;
     height: 220px;
   }
-  
+
 .sam-container>div {
     font-size: 75px;
     text-transform: uppercase;
@@ -199,16 +199,16 @@
     opacity: 0;
     height:0px;
 }
-  
+
 .sam-container>div:nth-child(1) {
     animation: animation 12s infinite;
 }
-  
+
 .sam-container>div:nth-child(2) {
     animation: animation 12s infinite;
     animation-delay: 4s;
 }
-  
+
 .sam-container>div:nth-child(3) {
     animation: animation 12s infinite;
     animation-delay: 8s;
@@ -231,7 +231,7 @@
         height: 0px;
     }
 }
-  
+
   .output {
     text-align:center;
     color: $primary-color;
@@ -240,9 +240,9 @@
       font-size:30px;
     }
   }
-  
+
   /* Cursor Styling */
-  
+
   .cursor::after {
     content:'';
     display:inline-block;
@@ -260,7 +260,7 @@
     height:13px;
     width:6px;
   }
-  
+
   @keyframes blink {
     0% {
       opacity:1;
@@ -276,24 +276,11 @@
     }
   }
 
-  p {  
-    border-right: solid 5px rgba(255,255,255,.75);  
-    white-space: nowrap;  overflow: hidden;      
-    font-family: 'Source Code Pro', monospace;    
-    font-size: 28px;  
-    color: $primary-color;
-  }
-    
-    /* Animation */
-  p {  
-    animation: animated-text 4s linear 1s 1 normal both,   animated-cursor 600ms linear infinite;}
-    /* text animation */
-
-  @keyframes animated-text{  
+  @keyframes animated-text{
     from{width: 0;}  to{width: 456px;}}
   /* cursor animations */
-  
-  @keyframes animated-cursor{  
-    from{border-right-color: rgba(255,255,255,.75);}  
+
+  @keyframes animated-cursor{
+    from{border-right-color: rgba(255,255,255,.75);}
     to{border-right-color: transparent;}
 }
