@@ -7,8 +7,8 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 import Paper from '@material-ui/core/Paper';
 import InputBase from '@material-ui/core/InputBase';
 import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
+import './introduction.scss';
 
 const useStyle = makeStyles({
   root: {
@@ -34,6 +34,7 @@ const useStyle = makeStyles({
    padding: 10,
  },
  search: {
+   marginTop: '5px',
    padding: '2px 4px',
    display: 'flex',
    alignItems: 'center',
@@ -57,9 +58,6 @@ const Introduction = () => {
             <Grid item xs={false} sm={3}/>
             <Grid item xs={12} sm={6}>
             <Paper component="form" className={classes.search}>
-              <IconButton className={classes.iconButton} aria-label="menu">
-                <MenuIcon />
-              </IconButton>
               <InputBase
                 className={classes.input}
                 placeholder="Search Samson's Mind"
@@ -70,6 +68,7 @@ const Introduction = () => {
               </IconButton>
             </Paper>
               <br />
+              <Grid container item className="center">
               <Paper className={classes.root}>
                 <Card className={classes.root}>
                   <CardHeader avatar={avatar} title="Samson Udo" subheader="Installation" action={icon}/>
@@ -77,18 +76,20 @@ const Introduction = () => {
 
                   <CardContent>
                     <Typography variant="h5" component="h2">
-                      Lets setup Samson on your computer
+                      Lets setup S.A.M. on your computer
                     </Typography>
                     <Typography className={classes.pos} color="textSecondary">
-                      Don't worry its not gonna take long to get you up and running on your machine.
+                      Don't worry it's not gonna take long to get it up and running on your machine.
                     </Typography>
                   </CardContent>
 
                   <CardActions>
-                    <Button size="large" component={Link} to="/auth">Proceed</Button>
+                    <Button size="large" component={Link} to="/install">Proceed</Button>
                   </CardActions>
                 </Card>
               </Paper>
+            </Grid>
+
               <br />
             </Grid>
             <Grid item xs={false} sm={3} />

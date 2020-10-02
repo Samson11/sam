@@ -1,21 +1,28 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import './loading.scss';
 
-const Loading = () => {
-  return (
-    <div className="page">
-      <div className="main">
-        <span>S</span>
-        <span>A</span>
-        <span>M</span>
-        <span>S</span>
-        <span className="letter"></span>
-        <span>N</span>
-      </div>
-      <Link to="/auth">Home</Link>
-    </div>
-  )
+class Loading extends Component {
+  state = {
+    redirect: false
+  }
+
+  componentDidMount() {
+    this.id = setTimeout(() => this.setState({ redirect: true }), 3000)
+  }
+
+  componentWillUnmount() {
+    clearTimeout(this.id)
+  }
+
+  render() {
+    return this.state.redirect
+        ? <Redirect to="/requirements" />
+        :  <div className="loader__body">
+            <CircularProgress />
+          </div>
+  }
 }
 
 export default Loading;

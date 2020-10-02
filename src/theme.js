@@ -5,14 +5,14 @@ const Theme = createMuiTheme({
     primary: {
       light: '#000',
       main:'#000',
-      dark: '#fff'
+      dark: '#000'
     },
     secondary: {
       light: '#fff',
       main:'#fff',
-      dark: '#000'
+      dark: '#fff'
     },
-    type: 'dark'
+    type: 'light'
   }
 });
 
