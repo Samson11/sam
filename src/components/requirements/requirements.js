@@ -46,7 +46,8 @@ const useStyle = makeStyles({
 
 const Requirements = () => {
   const classes = useStyle();
-  const freeMemory = os.freemem();
+  const freeMemory = os.freemem().toPrecision(2);
+  document.title = 'S.A.M | System Requirements';
 
   return (
     <Paper className={classes.whole}>
@@ -79,15 +80,15 @@ const Requirements = () => {
                     </TableRow>
                     <TableRow key="ram">
                       <TableCell component="th" scope="row">RAM</TableCell>
-                      <TableCell align="right">{Math.round(freeMemory)} GB</TableCell>
+                      <TableCell align="right">{freeMemory} GB</TableCell>
                     </TableRow>
                     <TableRow key="user">
                       <TableCell component="th" scope="row">User Name</TableCell>
-                      <TableCell align="right">Samson</TableCell>
+                      <TableCell align="right">{window.process.env.username}</TableCell>
                     </TableRow>
                     <TableRow key="os">
                       <TableCell component="th" scope="row">OS</TableCell>
-                      <TableCell align="right">Windows 10</TableCell>
+                      <TableCell align="right">{window.process.platform}</TableCell>
                     </TableRow>
                   </TableBody>
                 </Table>

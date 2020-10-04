@@ -5,6 +5,7 @@ import Installer from './components/install/install';
 import Requirements from './components/requirements/requirements';
 import Introduction from './components/introduction/introduction';
 import About from './components/about/about';
+import Installation from './components/installation/installation';
 import './App.scss';
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
         <Route path='/install' component={Installer} />
         <Route path='/intro' component={Introduction} />
         <Route path='/about' component={About} />
+        <Route path='/installation' component={Installation} />
       </Switch>
     </BrowserRouter>
   );

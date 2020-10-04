@@ -48,7 +48,7 @@ const useStyle = makeStyles({
 
 const Introduction = () => {
   const classes = useStyle()
-  const avatar = <Avatar aria-label="avatar" className={classes.avatar}>S</Avatar>
+  const avatar = <Avatar aria-label="avatar" className={classes.avatar}>{window.process.env.username[0]}</Avatar>
   const icon = <IconButton><MoreVertIcon /></IconButton>
 
   return (
@@ -71,7 +71,7 @@ const Introduction = () => {
               <Grid container item className="center">
               <Paper className={classes.root}>
                 <Card className={classes.root}>
-                  <CardHeader avatar={avatar} title="Samson Udo" subheader="Installation" action={icon}/>
+                  <CardHeader avatar={avatar} title={window.process.env.username} subheader="Installation" action={icon}/>
                   <CardMedia className={classes.media} title="" image={gif} />
 
                   <CardContent>
