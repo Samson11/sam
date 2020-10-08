@@ -21,7 +21,7 @@ const useStyle = makeStyles({
  card: {
    color: '#000',
    backgroundColor: '#fff',
-   marginTop: '80px'
+   marginTop: '60px'
  },
  table: {
    minWidth: 350,
@@ -36,12 +36,15 @@ const useStyle = makeStyles({
    paddingLeft: '10px',
    paddingRight: '10px',
    textAlign: 'center',
-   paddingBottom: '5px',
+   paddingBottom: '7px',
    fontFamily: 'sans-serif,Segoe Ui'
  },
  link: {
    textDecoration: 'none'
- }
+ },
+ head: {
+    backgroundColor: '#000'
+  }
 })
 
 const Requirements = () => {
@@ -65,12 +68,12 @@ const Requirements = () => {
                 Please wait while we check if your system can run S.A.M. optimally
               </Typography>
 
-              <TableContainer>
+              <TableContainer component={Paper}>
                 <Table className={classes.table} aria-label="desktop-table">
-                  <TableHead className="text">
-                    <TableRow>
-                      <TableCell>Specification</TableCell>
-                      <TableCell align="right">Found</TableCell>
+                  <TableHead>
+                    <TableRow className={classes.head}>
+                      <TableCell style={{color: 'white'}}>Specification</TableCell>
+                      <TableCell style={{color: 'white'}} align="right">Found</TableCell>
                     </TableRow>
                   </TableHead>
                   <TableBody>

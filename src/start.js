@@ -2,7 +2,6 @@ const { app, BrowserWindow, ipcMain } = require('electron')
 
 const path = require('path')
 const url = require('url')
-const Store = require('secure-electron-store').default
 const fs = require('fs')
 
 let mainWindow
@@ -14,16 +13,13 @@ function createWindow() {
     height: 700,
     webPreferences: {
       nodeIntegration: true,
-      contextIsolation: true,
-      preload: path.join(__dirname, 'preload.js'),
-      additionalArguments: [`storePath: ${app.getPath("userData")}`]
+      // contextIsolation: true,
+      // preload: path.join(__dirname, 'preload.js'),
     },
-    animated: true
+    animated: true,
+    frame: false
   })
 
-  const store = new Store({ path: app.getPath('userData') })
-  store.mainBindings(ipcMain,mainWindow,fs)
-  
   mainWindow.setMenuBarVisibility(false)
   mainWindow.loadURL(
     process.env.ELECTRON_START_URL ||
@@ -56,8 +52,6 @@ app.on('ready', createWindow)
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
     app.quit()
-  } else {
-    store.clearMainBindings(ipcMain)
   }
 })
 
@@ -70,14 +64,15 @@ app.on('activate', () => {
 app.on('closed', () => mainWindow = null)
 
 let newWindow
-function createNewWindow(url, hide) {
+function createNewWindow(url, hide, frame) {
   newWindow = new BrowserWindow({
     width: 800,
     height: 700,
     webPreferences: {
       nodeIntegration: true
     },
-    animated: true
+    animated: true,
+    frame: frame
   })
   newWindow.setMenuBarVisibility(hide)
   newWindow.loadURL(
@@ -99,8 +94,11 @@ function createNewWindow(url, hide) {
   })
 }
 
+/** Active Listeners */
 ipcMain.on('createBrowserWindow', (e, url, hide) => {
   toQuit = false;
   createNewWindow(url,hide)
   mainWindow.hide()
 })
+
+ipcMain.on('close', (e) => app.quit())

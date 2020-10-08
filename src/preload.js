@@ -1,7 +1,15 @@
-const { contextBridge, ipcRenderer } = require('electron')
-const fs = require('fs')
-const Store = require('secure-electron-store').default
+const { contextBridge } = require('electron')
 
-let store = new Store()
+function getD() {
+  return new Promise((resolve, reject) => {
+    if(window.localStorage.length) {
+      resolve(window.localStorage.length)
+    }else {
+      reject('Not found')
+    }
+  })
+}
 
-contextBridge.exposeInMainWorld('api', { store: store.preloadBindings(ipcRenderer, fs) })
+contextBridge.exposeInMainWorld('sam', {
+  log: (key, value) => console.log(key, value)
+})

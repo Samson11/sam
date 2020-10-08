@@ -6,6 +6,8 @@ import Requirements from './components/requirements/requirements';
 import Introduction from './components/introduction/introduction';
 import About from './components/about/about';
 import Installation from './components/installation/installation';
+import FirstTime from './components/first-time-project/firstTime';
+import Settings from './components/settings/settings';
 import './App.scss';
 
 function App() {
@@ -18,6 +20,8 @@ function App() {
         <Route path='/intro' component={Introduction} />
         <Route path='/about' component={About} />
         <Route path='/installation' component={Installation} />
+        <Route path='/first-project' component={FirstTime} />
+        <Route path='/settings' component={Settings} />
       </Switch>
     </BrowserRouter>
   );

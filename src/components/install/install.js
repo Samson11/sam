@@ -8,11 +8,10 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import Snackbar from '@material-ui/core/Snackbar';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { useTheme } from '@material-ui/core/styles';
+import { Link } from 'react-router-dom';
 import './install.scss';
 
 const Installer = () => {
-  const { ipcRenderer } = window.require('electron')
-
   document.title = 'S.A.M | Terms and Conditions';
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
@@ -33,16 +32,11 @@ const Installer = () => {
      setSnack({ ...snack, openSnack: false });
    };
 
-   const handleClose = () => {
-      ipcRenderer.send('createBrowserWindow', 'installation', false)
-   };
-
    return (
      <div>
        <Dialog
          fullScreen={fullScreen}
          open={true}
-         onClose={handleClose}
          aria-labelledby="responsive-dialog-title"
        >
          <DialogTitle id="responsive-dialog-title">{"Terms and Conditions"}</DialogTitle>
@@ -56,7 +50,7 @@ const Installer = () => {
            <Button onClick={snackbar({ vertical: 'bottom', horizontal: 'center' })} color="primary">
              Disagree
            </Button>
-           <Button onClick={handleClose} color="primary">
+           <Button component={Link} to="/installation" color="primary">
              Agree
            </Button>
          </DialogActions>

@@ -8,6 +8,7 @@ import Paper from '@material-ui/core/Paper';
 import InputBase from '@material-ui/core/InputBase';
 import IconButton from '@material-ui/core/IconButton';
 import SearchIcon from '@material-ui/icons/Search';
+import Fade from '@material-ui/core/Fade';
 import './introduction.scss';
 
 const useStyle = makeStyles({
@@ -34,7 +35,7 @@ const useStyle = makeStyles({
    padding: 10,
  },
  search: {
-   marginTop: '5px',
+   marginTop: '35px',
    padding: '2px 4px',
    display: 'flex',
    alignItems: 'center',
@@ -53,6 +54,7 @@ const Introduction = () => {
 
   return (
     <Paper className={classes.whole}>
+      <Fade in={true}>
       <Grid container direction="column">
           <Grid item container>
             <Grid item xs={false} sm={3}/>
@@ -95,6 +97,7 @@ const Introduction = () => {
             <Grid item xs={false} sm={3} />
           </Grid>
       </Grid>
+      </Fade>
     </Paper>
   )
 }
