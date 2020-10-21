@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(3),
   },
   authFields: {
-    width: '70%',
+    width: '60%',
     borderTopLeftRadius: '15px',
     borderTopRightRadius: '15px',
     marginBottom: '20px',
@@ -65,14 +65,13 @@ const Authentication = (data) => {
 
   return (
     <div>
-      <Paper>
-        <Grid container direction="column">
+      <Grid container direction="column">
             <Grid item container>
               <Grid item xs={false} sm={3}/>
               <Grid item xs={12} sm={6}>
               {regUI ?
                 <Slide direction="up" in={true} mountOnEnter unmountOnExit>
-                <Paper className="auth__paper">
+                <Paper className="auth__paper" elevation={4}>
                   <Typography variant="h5" className="auth__header--center">My Profile</Typography>
                   <p />
                   <Typography variant="h6" className="auth__header--center" component="p">
@@ -114,7 +113,7 @@ const Authentication = (data) => {
                          />
                        </FormGroup>
                      </FormControl>
-                     <Button variant="outlined">Register</Button>
+                     <center><Button variant="outlined">Register</Button></center>
                      <p className="space" />
                     </center>
                   </div>
@@ -156,7 +155,7 @@ const Authentication = (data) => {
                        }
                      />
                    </FormControl>
-
+                   <p />
                     <FormControl required component="fieldset" className={classes.formControl}>
                      <FormGroup>
                        <FormControlLabel
@@ -181,7 +180,6 @@ const Authentication = (data) => {
               <Grid item xs={false} sm={3} />
             </Grid>
         </Grid>
-        </Paper>
       </div>
     )
 }

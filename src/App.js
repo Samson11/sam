@@ -8,6 +8,14 @@ import About from './components/about/about';
 import Installation from './components/installation/installation';
 import FirstTime from './components/first-time-project/firstTime';
 import Settings from './components/settings/settings';
+import Dashboard from './components/dashboard/dashboard';
+import Profile from './components/profile/profile';
+import Subscription from './components/subscriptions/subscription';
+import Create from './components/create-project/create';
+import GetScreens from './components/screen-recorder/chooseScreen';
+import GetProjectData from './components/project-view/viewer';
+import Recorder from './components/screen-recorder/recorder';
+import GetTimeline from './components/project-view/timeline';
 import './App.scss';
 
 function App() {
@@ -22,6 +30,14 @@ function App() {
         <Route path='/installation' component={Installation} />
         <Route path='/first-project' component={FirstTime} />
         <Route path='/settings' component={Settings} />
+        <Route path='/home' component={Dashboard} />
+        <Route path='/profile' component={Profile} />
+        <Route path='/subscription' component={Subscription} />
+        <Route path='/create-project' component={Create} />
+        <Route path='/choose-screen' component={GetScreens} />
+        <Route path='/record' component={Recorder} />
+        <Route path='/viewer/' component={GetProjectData} />
+        <Route path='/timeline/' component={GetTimeline} />
       </Switch>
     </BrowserRouter>
   );

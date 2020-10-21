@@ -1,0 +1,30 @@
+.view__header {
+  padding-top: 50px;
+  text-decoration: overline;
+  text-align: center;
+}
+
+.timeline--notice {
+  text-align: center;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-bottom: 10px;
+}
+
+.timeline--header {
+  text-align: center;
+}
+
+.requirements--header {
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.overview--image {
+  height: 340px;
+  width: 400px;
+  border: 0.1px solid white;
+  border-radius: 5px;
+  object-fit: cover;
+}

@@ -49,7 +49,7 @@ const useStyle = makeStyles({
 
 const Requirements = () => {
   const classes = useStyle();
-  const freeMemory = os.freemem().toPrecision(2);
+  const freeMemory = Math.floor(os.freemem());
   document.title = 'S.A.M | System Requirements';
 
   return (

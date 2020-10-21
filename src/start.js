@@ -1,15 +1,15 @@
-const { app, BrowserWindow, ipcMain } = require('electron')
+const { app, BrowserWindow, ipcMain, dialog } = require('electron')
 
 const path = require('path')
 const url = require('url')
-const fs = require('fs')
+const { writeFile } = require('fs')
 
 let mainWindow
 let toQuit = true
 
 function createWindow() {
   mainWindow = new BrowserWindow({
-    width: 800,
+    width: 1100,
     height: 700,
     webPreferences: {
       nodeIntegration: true,
@@ -63,7 +63,7 @@ app.on('activate', () => {
 
 app.on('closed', () => mainWindow = null)
 
-let newWindow
+let newWindow;
 function createNewWindow(url, hide, frame) {
   newWindow = new BrowserWindow({
     width: 800,
@@ -92,6 +92,7 @@ function createNewWindow(url, hide, frame) {
   newWindow.on('closed', () => {
     newWindow = null;
   })
+
 }
 
 /** Active Listeners */
@@ -102,3 +103,8 @@ ipcMain.on('createBrowserWindow', (e, url, hide) => {
 })
 
 ipcMain.on('close', (e) => app.quit())
+ipcMain.on('minimise', (e) => newWindow.minimize())
+ipcMain.on('saveVideo', async (e, buffer) => {
+  const { filePath } = await dialog.showSaveDialog({ buttonLabel: 'Save Video', defaultPath: `S.A.M.vid-${Date.now()}.webm` })
+  writeFile(filePath, buffer, () => console.log('Video Saved'))
+})

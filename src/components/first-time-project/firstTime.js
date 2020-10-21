@@ -11,7 +11,6 @@ import Face from '../face-capture/face';
 import Authentication from '../authentication/authentication';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
-import MinimizeIcon from '@material-ui/icons/Minimize';
 import './FirstTime.scss';
 import { Link } from 'react-router-dom';
 const { ipcRenderer } = window.require('electron')
@@ -67,7 +66,7 @@ const FirstTime = () => {
          activeStep={activeStep}
          className={classes.root}
          nextButton={ activeStep >= 2 ?
-           <Button component={Link} to='/settings'>
+           <Button component={Link} to='/home'>
             Finish
             {theme.direction === 'rtl' ? <KeyboardArrowLeft /> : <KeyboardArrowRight />}
           </Button> :

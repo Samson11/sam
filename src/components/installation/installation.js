@@ -6,8 +6,8 @@ import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import Zoom from '@material-ui/core/Zoom';
 import { Grid, Typography } from '@material-ui/core';
+import { addData, addTable, verifyValidation, clearTable } from '../../database';
 import './installation.scss';
-const db = window.require('electron-db')
 
 const useStyles = makeStyles((theme) => ({
   whole: {
@@ -37,32 +37,43 @@ const Installation = () => {
     setTimeout(() => settingupState(true), 9900)
   }
 
-  const addData = () => {
-    let obj = new Object();
-    obj.name = window.process.env.username;
-    obj.time = new window.Date();
-    obj.installed = true;
-    db.insertTableContent('installation', obj, (succ, msg) => {
-      if(succ) {
+  const obj = {
+    name: window.process.env.username,
+    time: new window.Date(),
+    installed: true
+  };
+
+  const clearAndAdd = () => {
+    clearTable('installation')
+    .then(() => {
+      addTable('installation')
+      addData('installation', obj)
+      .then(() => {
         new Notification('S.A.M', { body: 'Installation Complete.\nFor full functionality a restart is required.'})
         ipcRenderer.send('createBrowserWindow', 'first-project', false, false)
-      } else {
-        alert('Could Install')
-      }
+      })
     })
   }
 
+  const add = () => {
+    addData('installation', obj)
+    .then(() => {
+      new Notification('S.A.M', { body: 'Installation Complete.\nFor full functionality a restart is required.'})
+      ipcRenderer.send('createBrowserWindow', 'first-project', false, false)
+    })
+    .catch(err => alert(err))
+  }
+
   const done = () => {
-    db.createTable('installation', (succ, msg) => {
-      if(db.valid('installation')) {
-        db.clearTable('installation', (s, m) => addData())
-      }
-      else if(succ) {
-        addData()
-      } else {
-        alert(`Installation Failed because ${msg}`)
+    addTable('installation')
+    .then((succ) => {
+      if(verifyValidation('installation')){
+        clearTable('installation').then(() => add())
+      } else if(succ){
+        add()
       }
     })
+    .catch(() => clearAndAdd())
   }
 
   updateUI(files, updates, settingup)

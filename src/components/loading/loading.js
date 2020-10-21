@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import Slide from '@material-ui/core/Slide';
+import { getData } from '../../database';
 import './loading.scss';
-const db = window.require('electron-db')
 
 class Loading extends Component {
   state = {
@@ -13,11 +12,9 @@ class Loading extends Component {
 
   componentDidMount() {
     this.id = setTimeout(() => this.setState({ redirect: true }), 3000)
-    db.getAll('installation', (succ, data) => {
-      if(succ) {
-        this.setState({ route: '/first-project'})
-      }
-    })
+    getData('installation')
+    .then((data) => data[0].installed ? this.setState({ route: '/first-project'}) : this.setState({ route: '/requirements'}))
+    .catch(err => alert(err))
   }
 
   componentWillUnmount() {
@@ -28,11 +25,9 @@ class Loading extends Component {
     document.title = 'S.A.M'
     return this.state.redirect
         ? <Redirect to={this.state.route} />
-        : <Slide direction="up" in={true} mountOnEnter unmountOnExit>
-        <div className="loader__body">
+        : <div className="loader__body">
             <CircularProgress />
           </div>
-        </Slide>
   }
 }
 
