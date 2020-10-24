@@ -105,17 +105,24 @@ class GetProjectData extends Component {
     image: ''
   }
 
-  componentWillMount() {
+  componentDidMount() {
     const res = async () => {
       const name = this.props.location.pathname.split('/viewer/')[1]
       const datum = await search('projects', 'id', name);
+      this.setState({ data: datum })
       const title = datum.map(a => a.title)[0];
+
+      if(window.localStorage.getItem(`${title}.complete`)){
+        this.setState({ image: window.localStorage.getItem(`${title}.complete`) })
+      }
+
       getData(`${title}.requirements`)
       .then(d => this.setState({ requirements: d[0] }))
       .catch(err => this.setState({ requirements: [] }))
-      if(window.localStorage.getItem(`${title}.complete`)){
-        this.setState({ data: datum, image: window.localStorage.getItem(`${title}.complete`) })
-      }
+      getData(`${title}.timelines`)
+      .then(d => this.setState({ timelines: d }))
+      .catch(err => this.setState({ timelines: [] }))
+
     };
     res()
   }
@@ -166,6 +173,9 @@ const Viewer = (data) => {
     }
   }
 
+  const a = info.map(a => a.title)[0];
+  window.localStorage.setItem('currentproject', a);
+
   return (
     <div>
     {/** Dialog  For Timeline */}
@@ -201,7 +211,7 @@ const Viewer = (data) => {
          </List>
        </Dialog>
 
-      {info.map((a) => {
+      { info && info.length > 0 && info.map((a) => {
         return(
           <div>
           <Header title={a.title} />
@@ -214,7 +224,7 @@ const Viewer = (data) => {
                     Requirements
                   </Typography>
                   <List style={{ width: '100%' }}>
-                    {data.requirements.map((value) => {
+                    {data.requirements && data.requirements.length > 0 && data.requirements.map((value) => {
                       if(value.length > 0) {
                         return (
                           <ListItem key={value} role={undefined} dense button>
@@ -253,10 +263,10 @@ const Viewer = (data) => {
 
                 <p className="space" />
                 <Typography variant="h6" component="p" className="timeline--notice">
-                  {a.todos ? `${a.todos.length} timelines` : 'You have no timeline setup on this project.\n\n Lets start by creating a timeline'}
+                  {data.timelines && data.timelines.length > 0 ? `${data.timelines.length} timelines in Session` : 'You have no timeline setup on this project.\n\n Lets start by creating a timeline'}
                 </Typography>
                 <center>
-                  <Button onClick={handleClickOpen}>Start a Timeline</Button>
+                  {data.timelines && data.timelines.length > 0 ? <Button component={Link} to="/timeline-preview">View Timeline</Button> : <Button onClick={handleClickOpen}>Start a Timeline</Button>}
                 </center>
                 <div className="space" />
               </Paper>
@@ -288,7 +298,7 @@ const Viewer = (data) => {
                   />
                 </form>
                 <List style={{ width: '100%' }}>
-                  {requirements.map((value) => {
+                  {requirements && requirements.map((value) => {
                     return (
                       <ListItem key={value} role={undefined} dense button>
                         <ListItemText id={value} primary={value} />
@@ -382,13 +392,13 @@ const Viewer = (data) => {
                   Todos
                 </Typography>
                 <List style={{ width: '100%' }}>
-                  {data.timelines.map((value) => {
+                  {data.timelines && data.timelines.length > 0 && data.timelines.map((value) => {
                     if(value.length > 0) {
                       return (
-                        <ListItem key={value} role={undefined} dense button>
-                          <ListItemText id={value} primary={value} />
+                        <ListItem key={value.timeline} role={undefined} dense button>
+                          <ListItemText id={value.timeline} primary={value.timeline} />
                           <ListItemSecondaryAction>
-                            <IconButton edge="end" aria-label="delete" onClick={(value) => setRequirements((chips) => chips.filter((chip) => chip.key !== value.key))}>
+                            <IconButton edge="end" aria-label="delete" onClick={(value) => setRequirements((chips) => chips.filter((chip) => chip.key !== value.timeline))}>
                               <DeleteOutlineIcon />
                             </IconButton>
                           </ListItemSecondaryAction>
@@ -397,7 +407,7 @@ const Viewer = (data) => {
                     } else {
                       return(
                         <Typography variant="h6" component="div" className="requirements--header">
-                          You have no requirement setup. Create some now!
+                          You have no todos setup. Create some now!
                         </Typography>
                       )
                     }

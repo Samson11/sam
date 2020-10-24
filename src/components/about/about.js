@@ -1,13 +1,10 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { withRouter } from 'react-router-dom';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import IconButton from '@material-ui/core/IconButton';
-import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import Paper from '@material-ui/core/Paper';
 import { Grid } from '@material-ui/core';
+import Slide from '@material-ui/core/Slide';
+import Header from '../header/header';
 import './about.scss';
 import * as sam from '../../../package.json';
 
@@ -29,26 +26,18 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const About = ({ history }) => {
+const About = () => {
   document.title = 'S.A.M. | About'
   const classes = useStyles();
   return (
     <div className={classes.root}>
-      <AppBar position="static">
-        <Toolbar variant="dense">
-          <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="back" onClick={() => history.goBack()}>
-           <ArrowBackIcon />
-          </IconButton>
-          <Typography variant="h6" color="inherit">
-            About
-          </Typography>
-        </Toolbar>
-      </AppBar>
+      <Header title="About" />
       <Grid container direction="column">
         <Grid item container>
           <Grid item xs={false} sm={3}/>
             <Grid item xs={12} sm={6}>
               <Grid container item className="center">
+                <Slide direction="up" in={true} mountOnEnter unmountOnExit>
                 <Paper className={classes.paper}>
                   <Typography variant="h5" color="inherit" className="text-center">
                     S.A.M
@@ -68,6 +57,7 @@ const About = ({ history }) => {
                     S.A.M is developed and maintained by Samson Udo.
                   </Typography>
                 </Paper>
+                </Slide>
               </Grid>
             </Grid>
           <Grid item xs={false} sm={3} />
@@ -77,4 +67,4 @@ const About = ({ history }) => {
   )
 }
 
-export default withRouter(About);
+export default About;

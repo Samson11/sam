@@ -22,9 +22,30 @@
 }
 
 .overview--image {
-  height: 340px;
-  width: 400px;
+  height: 300px;
+  width: 300px;
   border: 0.1px solid white;
   border-radius: 5px;
   object-fit: cover;
+}
+
+.create--timeline {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.create--timeline--heading {
+  padding-top: 30px;
+}
+
+.sp {
+  padding-top: 20px;
+  margin-left: 40%;
+  margin-right: 32%;
+  width: 100%;
+  display: inline-flex;
+}
+
+.button--space {
+  margin-left: 10px;
 }

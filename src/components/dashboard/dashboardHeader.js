@@ -23,6 +23,7 @@ import PaymentIcon from '@material-ui/icons/Payment';
 import Tooltip from '@material-ui/core/Tooltip';
 import Avatar from '@material-ui/core/Avatar';
 import CloseIcon from '@material-ui/icons/Close';
+import InfoIcon from '@material-ui/icons/Info';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
 import Slide from '@material-ui/core/Slide';
@@ -95,7 +96,7 @@ const useStyles = makeStyles((theme) => ({
   },
   avatar: {
     marginRight: theme.spacing(3),
-    right: '-76%',
+    right: '-72%',
     backgroundColor: theme.palette.primary.light
   },
   endButton: {
@@ -224,6 +225,12 @@ const DashboardHeader = () => {
         </ListItem>
         </Tooltip>
       ))}
+      <Tooltip title="About">
+      <ListItem component={Link} button key='About' to='/about'>
+        <ListItemIcon><InfoIcon/></ListItemIcon>
+        <ListItemText primary="About" />
+      </ListItem>
+      </Tooltip>
     </List>
   </Drawer>
   </Slide>

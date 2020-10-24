@@ -86,7 +86,7 @@ const Projects = (projects) => {
                 </IconButton>
               }
               title={p.title}
-              subheader={p.time}
+              subheader={new Date(p.time).toDateString()}
             />
             <div className={classes.chipList}>
             {p.tags.map((data) => {

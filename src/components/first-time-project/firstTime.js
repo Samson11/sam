@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
 const FirstTime = () => {
   const classes = useStyles();
   const theme = useTheme();
-  const [activeStep, setActiveStep] = useState(0);
+  const [activeStep, setActiveStep] = useState(1);
 
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -54,11 +54,11 @@ const FirstTime = () => {
         <CloseIcon />
       </IconButton>
         <Typography variant="h6" color="inherit">
-          {activeStep === 0 ? 'Create My Profile' : 'Face Recognition'}
+          {activeStep === 1 ? 'Create My Profile' : 'Face Recognition'}
         </Typography>
       </Toolbar>
     </AppBar>
-    {activeStep === 0 ? <Authentication number={activeStep} /> : <Face />}
+    {activeStep === 1 ? <Authentication number={activeStep} /> : <Face />}
       <MobileStepper
          variant="progress"
          steps={3}
@@ -77,7 +77,7 @@ const FirstTime = () => {
 
        }
        backButton={
-         <Button size="small" onClick={handleBack} disabled={activeStep === 0}>
+         <Button size="small" onClick={handleBack} disabled={activeStep <= 1}>
            {theme.direction === 'rtl' ? <KeyboardArrowRight /> : <KeyboardArrowLeft />}
            Back
          </Button>

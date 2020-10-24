@@ -7,7 +7,6 @@ import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import Tooltip from '@material-ui/core/Tooltip';
 import Avatar from '@material-ui/core/Avatar';
 import CloseIcon from '@material-ui/icons/Close';
-import RemoveIcon from '@material-ui/icons/Remove';
 import { makeStyles } from '@material-ui/core/styles';
 import { withRouter } from 'react-router-dom';
 import { verifyValidation } from '../../database';
@@ -35,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
   },
   avatar: {
     marginRight: theme.spacing(2),
-    right: '-77%',
+    right: '-78%',
     backgroundColor: theme.palette.primary.light
   },
   minimise: {
@@ -64,13 +63,6 @@ const Header = (data) => {
         {verifyValidation('profile') ? <Avatar aria-label="avatar" src={window.localStorage.getItem('profile')} className={classes.avatar}></Avatar> : <Avatar aria-label="avatar" className={classes.avatar}>{window.process.env.username[0]}</Avatar>}
         </Tooltip>
         <div className={classes.meta}>
-        <IconButton
-          className={classes.minimise}
-          edge="end"
-          onClick={() => ipcRenderer.send('minimise', 'sup')}
-          color="inherit">
-          <RemoveIcon />
-        </IconButton>
         <Tooltip title="Close">
         <IconButton
           className={classes.endButton}

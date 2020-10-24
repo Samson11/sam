@@ -40,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'center'
   },
   bottom: {
-    bottom: '-20px',
+    bottom: '1px',
     position: 'relative',
     right: '-48%'
   }
