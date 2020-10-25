@@ -192,7 +192,7 @@ const CreateProject = ({ history }) => {
   const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
   const classes = useStyles();
   const [chipData, setChipData] = useState([]);
-  const [rating, setRating] = React.useState(2);
+  const [rating, setRating] = useState(2);
   const handleDelete = (chipToDelete) => () => setChipData((chips) => chips.filter((chip) => chip.key !== chipToDelete.title));
   const add = (label) => setChipData(...chipData, label)
   const [activeStep, setActiveStep] = useState(0);
@@ -310,7 +310,7 @@ const CreateProject = ({ history }) => {
                       onChange={(event) => setData(event.target.value)}
                       onKeyDown={e => {
                        if (e.keyCode === 13 && e.target.value) {
-                         setChipData((old) => [...old, { title: e.target.value }]);
+                         setChipData(chipData.concat({title: e.target.value }));
                        }
                      }}
                     />

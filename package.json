@@ -16,21 +16,13 @@
     "clsx": "^1.1.1",
     "date-fns": "^2.16.1",
     "electron-db": "^0.15.7",
-    "electron-screenshot": "^1.0.5",
-    "jimp": "^0.16.1",
     "js-cookie": "^2.2.1",
     "node-sass": "^4.14.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-paystack": "^3.0.2",
-    "react-redux": "^7.2.1",
-    "react-redux-firebase": "^3.7.0",
-    "react-rnd": "^10.2.3",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "3.4.3",
-    "redux": "^4.0.5",
-    "redux-firestore": "^0.13.0",
-    "redux-thunk": "^2.3.0"
+    "react-scripts": "3.4.3"
   },
   "devDependencies": {
     "electron": "^10.0.0",
@@ -60,7 +52,7 @@
       "category": "com.samson"
     },
     "directories": {
-      "buildResources": "public"
+      "buildResources": "assets"
     },
     "files": [
      "build/**/*",

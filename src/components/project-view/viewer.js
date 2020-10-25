@@ -245,11 +245,6 @@ const Viewer = (data) => {
                       }
                     })}
                   </List>
-                  <center>
-                  <Fab color="primary" aria-label="add" size="small" style={{ marginBottom: '15px', marginTop: '20px' }}>
-                  <AddIcon />
-                  </Fab>
-                  </center>
                   </Paper>
                 </Grow>
               </Grid>
@@ -413,11 +408,6 @@ const Viewer = (data) => {
                     }
                   })}
                 </List>
-                <center>
-                <Fab color="primary" aria-label="add" size="small" style={{ marginBottom: '15px', marginTop: '20px' }}>
-                <SpellcheckIcon />
-                </Fab>
-                </center>
                 </Paper>
               </Grow>
               </Grid>

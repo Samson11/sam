@@ -2,6 +2,7 @@
   - Modified Installation
   - Screen Recorder
   - Local Database
+  - Create Project
   - Project Management
   - Settings
   - Face Recognition

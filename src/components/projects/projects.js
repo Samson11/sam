@@ -9,7 +9,7 @@ import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
 import Button from '@material-ui/core/Button';
-import { getData } from '../../database';
+import { getData, deleteRecord } from '../../database';
 import { Link } from 'react-router-dom';
 import Grid from '@material-ui/core/Grid';
 import Chip from '@material-ui/core/Chip';
@@ -51,22 +51,29 @@ const useStyles = makeStyles((theme) => ({
 
 const GetProjects = () => {
   const [proj,setProject] = useState([]);
+  const [loaded, setLoaded] = useState(false);
   useEffect(() => {
     const res = async () => {
         const data = await getData('projects');
         const b = data.map(d => d)
         setProject(...proj, b)
+        setLoaded(true);
     };
     res();
   }, [])
 
   useEffect(() => console.log(proj), [proj])
-  return proj.length > 1 ? <Projects projects={proj}/> : <EmptyProjects />;
+  return loaded && proj.length > 0 ? <Projects projects={proj}/> : <EmptyProjects />;
 }
 
 const Projects = (projects) => {
   const classes = useStyles();
   const myProjects = projects.projects;
+
+  const deleteProject = (id, name) => {
+    deleteRecord('projects', id).then(() => alert('Project ' + name + ' has been deleted'));
+    window.location.reload()
+  }
 
   return (
     <Grid container spacing={2}>
@@ -81,7 +88,7 @@ const Projects = (projects) => {
                 </Avatar>
               }
               action={
-                <IconButton aria-label="delete">
+                <IconButton aria-label="delete" onClick={() => deleteProject(p.id, p.title)}>
                   <DeleteOutlineIcon />
                 </IconButton>
               }
@@ -93,7 +100,7 @@ const Projects = (projects) => {
              return (
                <li key={data.key}>
                  <Chip variant="outlined"
-                   label={data.label} className={classes.chip}/>
+                   label={data.title} className={classes.chip}/>
                </li>
              );
            })}
