@@ -614,7 +614,7 @@ export const OppositeTimel = (data) => {
         return (
           <TimelineItem>
             <TimelineOppositeContent>
-              <Typography color="textSecondary">{t.date.toDateString()}</Typography>
+              <Typography color="textSecondary">{new Date(t.date).toDateString()}</Typography>
             </TimelineOppositeContent>
             <TimelineSeparator>
               <TimelineDot />

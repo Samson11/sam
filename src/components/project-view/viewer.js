@@ -225,7 +225,6 @@ const Viewer = (data) => {
                   </Typography>
                   <List style={{ width: '100%' }}>
                     {data.requirements && data.requirements.length > 0 && data.requirements.map((value) => {
-                      if(value.length > 0) {
                         return (
                           <ListItem key={value} role={undefined} dense button>
                             <ListItemText id={value} primary={value} />
@@ -236,14 +235,11 @@ const Viewer = (data) => {
                             </ListItemSecondaryAction>
                           </ListItem>
                         );
-                      } else {
-                        return(
-                          <Typography variant="h6" component="div" className="requirements--header">
-                            You have no requirement setup. Create some now!
-                          </Typography>
-                        )
-                      }
                     })}
+                    { data.requirements.length === 0 && <Typography variant="h6" component="div" className="requirements--header">
+                      You have no requirement setup. Create some now!
+                    </Typography>
+                  }
                   </List>
                   </Paper>
                 </Grow>
@@ -258,7 +254,7 @@ const Viewer = (data) => {
 
                 <p className="space" />
                 <Typography variant="h6" component="p" className="timeline--notice">
-                  {data.timelines && data.timelines.length > 0 ? `${data.timelines.length} timelines in Session` : 'You have no timeline setup on this project.\n\n Lets start by creating a timeline'}
+                  {data.timelines && data.timelines.length > 0 ? `${data.timelines.length} timeline(s) in Session` : 'You have no timeline setup on this project.\n\n Lets start by creating a timeline'}
                 </Typography>
                 <center>
                   {data.timelines && data.timelines.length > 0 ? <Button component={Link} to="/timeline-preview">View Timeline</Button> : <Button onClick={handleClickOpen}>Start a Timeline</Button>}
@@ -388,7 +384,6 @@ const Viewer = (data) => {
                 </Typography>
                 <List style={{ width: '100%' }}>
                   {data.timelines && data.timelines.length > 0 && data.timelines.map((value) => {
-                    if(value.length > 0) {
                       return (
                         <ListItem key={value.timeline} role={undefined} dense button>
                           <ListItemText id={value.timeline} primary={value.timeline} />
@@ -399,14 +394,10 @@ const Viewer = (data) => {
                           </ListItemSecondaryAction>
                         </ListItem>
                       );
-                    } else {
-                      return(
-                        <Typography variant="h6" component="div" className="requirements--header">
-                          You have no todos setup. Create some now!
-                        </Typography>
-                      )
-                    }
                   })}
+                  {data.timelines.length === 0 &&   <Typography variant="h6" component="div" className="requirements--header">
+                      You have no todos setup. Create some now!
+                    </Typography>}
                 </List>
                 </Paper>
               </Grow>
