@@ -48,6 +48,7 @@ const About = () => {
                   <Typography variant="h6" color="inherit" className="text-body">
                     S.A.M stands for Such an Amazing Machine.
                     It is designed to simplify your lifestyle and workflow on any and every activity performed on a Computer.
+                    He can illustrate ideas and steps using timelines
                   </Typography>
                   <Typography variant="h6" color="inherit" className="text-body">
                     All you need to do is to train S.A.M and he would help out whenever he can.
